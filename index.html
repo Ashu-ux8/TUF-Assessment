@@ -45,28 +45,50 @@ body {
 /* ═══════════════════════════════════════════════
    LEFT PANEL - HERO (Original)
 ═══════════════════════════════════════════════ */
-.hero-panel { width: 340px; flex-shrink: 0; position: relative; }
-.binder-wrapper {
-  background: #3a3228; border-radius: 18px 6px 6px 18px; padding: 16px 0 16px 20px;
-  height: 100%; min-height: 750px; box-shadow: -4px 0 0 #2a241c, 4px 8px 32px rgba(0,0,0,0.35); position: relative;
+.hero-panel { 
+  width: 340px; 
+  flex-shrink: 0; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: flex-end; /* Anchors image to bottom [cite: 6] */
 }
+
+.binder-wrapper {
+  background: #3a3228; 
+  border-radius: 18px 6px 6px 18px; 
+  padding: 16px 0 0 20px; 
+  height: 90%; /* Creates the top dark gap [cite: 11] */
+  min-height: 650px; 
+  box-shadow: -4px 0 0 #2a241c, 4px 8px 32px rgba(0,0,0,0.35); 
+  position:relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
 .spiral-holes { position: absolute; left: 8px; top: 40px; bottom: 40px; display: flex; flex-direction: column; justify-content: space-around; }
 .spiral-hole { width: 18px; height: 18px; border-radius: 50%; background: #1a1410; border: 2px solid #4a3e32; position: relative; }
 .spiral-hole::after { content: ''; position: absolute; width: 6px; height: 6px; border-radius: 50%; background: #2a241c; top: 50%; left: 50%; transform: translate(-50%,-50%); }
 
-.hero-content { background: var(--paper); border-radius: 10px 4px 4px 10px; height: 100%; overflow: hidden; display: flex; flex-direction: column; }
-.hero-image-area { flex: 1; position: relative; overflow: hidden; min-height: 300px; }
+.hero-content { 
+  background: var(--paper); 
+  border-radius: 10px 4px 4px 10px; 
+  height: 98%; /* Adjusted for bottom alignment [cite: 6] */
+  overflow: hidden; 
+  display: flex; 
+  flex-direction: column; 
+}
+
+.hero-image-area { flex: 1; position: relative; overflow: hidden; }
 .hero-image-area img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s ease; }
 .hero-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); padding: 25px; color: white; }
 
 .hero-strip { padding: 20px; border-top: 1px solid var(--paper-shadow); background: var(--paper-dark); }
 .quote-text { font-family: 'Caveat', cursive; font-size: 1.2rem; color: var(--ink-muted); line-height: 1.4; }
 
-/* Stats Row [Original] */
 .hero-stats { display: flex; padding: 14px 20px; gap: 12px; border-top: 1px solid var(--paper-shadow); }
 .stat-pill { flex: 1; background: white; border-radius: 10px; padding: 8px 10px; text-align: center; border: 1px solid var(--paper-shadow); }
 .stat-num { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--accent); }
-.stat-label { font-size: 0.65rem; color: var(--ink-faint); text-transform: uppercase; margin-top: 2px; }
 
 /* ═══════════════════════════════════════════════
    RIGHT PANEL - CALENDAR HEADER (Updated)

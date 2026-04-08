@@ -49,6 +49,79 @@ body {
 }
 
 /* ═══════════════════════════════════════════════
+   MOBILE & SCALING FIXES
+═══════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .app-wrapper {
+    flex-direction:column; /* Stacks Hero and Calendar [cite: 17] */
+    padding: 12px;
+    gap: 16px;
+  }
+
+  .hero-panel {
+    width: 100%; /* Spans full width of phone screen */
+    height: 350px;
+    min-height: 100px;
+  }
+
+  .binder-wrapper {
+    height: 50%;
+    min-height: 350px;
+    border-radius: 16px;
+    padding: 12px 12px 0 24px;
+  }
+
+  .hero-content {
+    height: 280px; /* Condensed height for mobile anchor [cite: 6] */
+  }
+
+  .cal-header {
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .header-controls {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .legend-chips {
+    width: 100%;
+    overflow-x: auto; /* Horizontal scroll for chips on small screens */
+    padding-bottom: 5px;
+    display: flex;
+  }
+
+  .chip {
+    flex-shrink: 0; /* Prevents chips from squishing */
+  }
+
+  .day-cell {
+    min-height: 50px; /* Ensures touch targets are usable [cite: 17] */
+    padding: 5px;
+  }
+
+  .day-num {
+    font-size: 0.9rem;
+  }
+}
+
+/* Extra small phone scaling */
+@media (max-width: 400px) {
+  .month-selector h2 {
+    font-size: 1.1rem;
+  }
+  .cal-grid {
+    gap: 4px;
+  }
+  .day-cell {
+    border-radius: 6px;
+  }
+}
+/* ═══════════════════════════════════════════════
    LEFT PANEL - HERO [cite: 6, 11]
 ═══════════════════════════════════════════════ */
 .hero-panel { 

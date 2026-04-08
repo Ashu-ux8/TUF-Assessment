@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=Caveat:wght@400;600&display=swap" rel="stylesheet"/>
 <style>
 /* ═══════════════════════════════════════════════
-   CSS VARIABLES & RESET (Original)
+   CSS VARIABLES & RESET [cite: 8]
 ═══════════════════════════════════════════════ */
 :root {
   --accent: #c8855a;
@@ -23,7 +23,6 @@
   --cat-holiday: #e05c5c;
   --cat-work: #4a7fc1;
   --cat-personal: #7cb87e;
-  --cat-travel: #d4a843;
   --range-color: rgba(200,133,90,0.18);
   --range-border: rgba(200,133,90,0.4);
   --toast-bg: #2a2118;
@@ -40,27 +39,34 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
 }
 
-.app-wrapper { display: flex; max-width: 1400px; margin: 0 auto; padding: 24px; gap: 24px; }
+.app-wrapper { 
+  display: flex; 
+  flex-wrap: wrap; 
+  max-width: 1400px; 
+  margin: 0 auto; 
+  padding: 24px; 
+  gap: 24px; 
+}
 
 /* ═══════════════════════════════════════════════
-   LEFT PANEL - HERO (Original)
+   LEFT PANEL - HERO [cite: 6, 11]
 ═══════════════════════════════════════════════ */
 .hero-panel { 
   width: 340px; 
   flex-shrink: 0; 
   display: flex; 
   flex-direction: column; 
-  justify-content: flex-end; /* Anchors image to bottom [cite: 6] */
+  justify-content: flex-end; 
 }
 
 .binder-wrapper {
   background: #3a3228; 
   border-radius: 18px 6px 6px 18px; 
   padding: 16px 0 0 20px; 
-  height: 90%; /* Creates the top dark gap [cite: 11] */
+  height: 90%; 
   min-height: 650px; 
   box-shadow: -4px 0 0 #2a241c, 4px 8px 32px rgba(0,0,0,0.35); 
-  position:relative;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -73,7 +79,7 @@ body {
 .hero-content { 
   background: var(--paper); 
   border-radius: 10px 4px 4px 10px; 
-  height: 98%; /* Adjusted for bottom alignment [cite: 6] */
+  height: 97%; 
   overflow: hidden; 
   display: flex; 
   flex-direction: column; 
@@ -91,7 +97,7 @@ body {
 .stat-num { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--accent); }
 
 /* ═══════════════════════════════════════════════
-   RIGHT PANEL - CALENDAR HEADER (Updated)
+   RIGHT PANEL - CALENDAR HEADER [cite: 4, 5]
 ═══════════════════════════════════════════════ */
 .calendar-panel { flex: 1; display: flex; flex-direction: column; gap: 20px; min-width: 0; }
 .cal-header {
@@ -99,9 +105,9 @@ body {
   display: flex; justify-content: space-between; align-items: center;
   box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid rgba(255,255,255,0.6);
 }
+
 .month-selector { display: flex; align-items: center; gap: 15px; background: white; padding: 5px 15px; border-radius: 10px; border: 1px solid var(--paper-shadow); }
 .month-selector h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--ink); }
-.month-selector span { font-weight: 300; color: var(--ink-faint); margin-left: 5px; }
 
 .nav-arrow { background: none; border: none; cursor: pointer; font-size: 1.2rem; color: var(--ink-muted); transition: 0.2s; }
 .nav-arrow:hover { color: var(--accent); transform: scale(1.1); }
@@ -113,62 +119,55 @@ body {
   display: flex; align-items: center; gap: 6px; background: white; border: 1.5px solid var(--paper-shadow);
   cursor: pointer; transition: 0.2s;
 }
-.chip span { font-size: 10px; }
-.chip:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
 .chip.active { background: #fffaf5; border-width: 2.5px; }
-
 .chip.holiday { border-color: var(--cat-holiday); color: var(--cat-holiday); }
 .chip.work { border-color: var(--cat-work); color: var(--cat-work); }
 .chip.personal { border-color: var(--cat-personal); color: var(--cat-personal); }
 
 /* ═══════════════════════════════════════════════
-   CALENDAR GRID (Original)
+   GRID & CELLS [cite: 12, 13]
 ═══════════════════════════════════════════════ */
 .dow-row { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; padding: 0 10px; }
 .dow-cell { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--accent); text-align: center; }
 
 .cal-grid-wrapper { background: var(--paper); border-radius: 16px; padding: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); position: relative; }
-.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; position: relative; z-index: 1; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; padding-top: 30px; }
 
 .day-cell { 
   aspect-ratio: 1; background: white; border-radius: 12px; padding: 10px; 
   cursor: pointer; border: 1.5px solid transparent; transition: 0.25s; 
   position: relative; display: flex; flex-direction: column;
 }
-.day-cell:hover { border-color: var(--accent-light); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.06); }
-.day-cell.selected { border-color: var(--accent); background: #fffaf5; z-index: 2; }
+.day-cell.selected { border-color: var(--accent); background: #fffaf5; }
 .day-cell.in-range { background: var(--range-color); border-color: var(--range-border); }
 .day-cell.today { border-color: var(--accent); font-weight: bold; }
 .day-num { font-family: 'Playfair Display', serif; font-size: 1.1rem; }
 
-/* Filter Highlighting (Updated) */
-.day-cell.filter-dim { opacity: 0.2; transform: scale(0.92); pointer-events: none; }
+/* Filter Highlighting  */
+.day-cell.filter-dim { opacity: 0.2; transform: scale(0.95); pointer-events: none; }
 .day-cell.filter-match.holiday { border-color: var(--cat-holiday); box-shadow: 0 0 15px rgba(224, 92, 92, 0.4); }
 .day-cell.filter-match.work { border-color: var(--cat-work); box-shadow: 0 0 15px rgba(74, 127, 193, 0.4); }
 .day-cell.filter-match.personal { border-color: var(--cat-personal); box-shadow: 0 0 15px rgba(124, 184, 126, 0.4); }
 
 /* ═══════════════════════════════════════════════
-   NOTES SECTION (Updated to Reference)
+   NOTES SECTION [cite: 14]
 ═══════════════════════════════════════════════ */
-.notes-section { background: var(--paper); border-radius: 16px; padding: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
+.notes-section { width: 100%; background: var(--paper); border-radius: 16px; padding: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
 .notes-input-area { display: flex; gap: 15px; margin-bottom: 20px; }
 .notes-textarea {
   flex: 1; min-height: 80px; border: 1.5px solid var(--paper-shadow); border-radius: 10px; padding: 15px;
   font-family: 'Caveat', cursive; font-size: 1.2rem; outline: none; background: white; resize: none;
 }
 .save-btn { padding: 10px 25px; background: var(--accent); color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.2s; }
-.save-btn:hover { background: var(--accent-dark); }
-.discard-btn { background: #e05c5c; margin-top: 5px; width: 100%; padding: 8px; border-radius: 6px; color: white; border: none; cursor: pointer; font-size: 0.75rem; }
 
 .month-notes-container { display: flex; flex-direction: column; gap: 10px; }
 .note-card {
     background: white; border-radius: 10px; padding: 12px 18px; border-left: 4px solid var(--accent);
     display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: 0.2s;
 }
-.note-card:hover { transform: translateX(5px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
 
 /* ═══════════════════════════════════════════════
-   MODAL & TOAST (Original)
+   MODAL & TOAST
 ═══════════════════════════════════════════════ */
 .flip-overlay { position: fixed; inset: 0; z-index: 500; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); }
 .flip-overlay.active { display: flex; }
@@ -182,17 +181,11 @@ body {
 }
 .toast.show { transform: translateX(-50%) translateY(0); }
 
-/* Dark Mode [Original] */
 body.dark {
   --paper: #1e1a14; --paper-dark: #17140f; --paper-shadow: #2e2820; --ink: #f0ead8; --ink-muted: #b0a090;
   --toast-bg: #f0ead8; --toast-text: #1e1a14;
 }
 body.dark .day-cell, body.dark .note-card, body.dark .month-selector { background: #252018; }
-
-@media (max-width: 900px) { .app-wrapper { flex-direction: column; } .hero-panel { width: 100%; } }
-
-.label-text { font-size: 0.8rem; font-weight: bold; color: var(--ink-muted); margin-bottom: 2px; display: block; }
-.event-list-item { padding: 10px; background: white; border-radius: 8px; border: 1px solid var(--paper-shadow); margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
 </style>
 </head>
 <body class="light">
@@ -207,28 +200,27 @@ body.dark .day-cell, body.dark .note-card, body.dark .month-selector { backgroun
     </div>
     <div style="padding: 25px;">
         <div id="event-creation-area" style="display: flex; flex-direction: column; gap: 15px;">
-            <div>
-                <span class="label-text">Start</span>
-                <div style="display: flex; gap: 10px;">
-                    <input type="date" id="ev-start-date" style="flex:1; padding:10px; border-radius:8px; border:1px solid var(--paper-shadow);">
-                    <input type="time" id="ev-start-time" value="09:00" style="width:100px; padding:10px; border-radius:8px; border:1px solid var(--paper-shadow);">
+            <div style="display: flex; gap: 10px;">
+                <div style="flex:1"><label style="font-size:0.7rem; font-weight:bold;">Start</label>
+                  <input type="date" id="ev-start-date" style="width:100%; padding:10px; border-radius:8px; border:1px solid var(--paper-shadow);">
+                </div>
+                <div style="width:100px"><label style="font-size:0.7rem; font-weight:bold;">Time</label>
+                  <input type="time" id="ev-start-time" value="09:00" style="width:100%; padding:10px; border-radius:8px; border:1px solid var(--paper-shadow);">
                 </div>
             </div>
-            <div>
-                <span class="label-text">End</span>
-                <div style="display: flex; gap: 10px;">
-                    <input type="date" id="ev-end-date" style="flex:1; padding:10px; border-radius:8px; border:1px solid var(--paper-shadow);">
-                    <input type="time" id="ev-end-time" value="10:00" style="width:100px; padding:10px; border-radius:8px; border:1px solid var(--paper-shadow);">
+            <div style="display: flex; gap: 10px;">
+                <div style="flex:1"><label style="font-size:0.7rem; font-weight:bold;">End</label>
+                  <input type="date" id="ev-end-date" style="width:100%; padding:10px; border-radius:8px; border:1px solid var(--paper-shadow);">
+                </div>
+                <div style="width:100px"><label style="font-size:0.7rem; font-weight:bold;">Time</label>
+                  <input type="time" id="ev-end-time" value="10:00" style="width:100%; padding:10px; border-radius:8px; border:1px solid var(--paper-shadow);">
                 </div>
             </div>
-            <div>
-                <span class="label-text">Category</span>
-                <select id="ev-category" style="width:100%; padding:10px; border-radius:8px; border:1px solid var(--paper-shadow); background:white;">
-                    <option value="work">Work</option>
-                    <option value="holiday">Holiday</option>
-                    <option value="personal">Personal</option>
-                </select>
-            </div>
+            <select id="ev-category" style="padding:10px; border-radius:8px; border:1px solid var(--paper-shadow); background:white;">
+                <option value="work">Work</option>
+                <option value="holiday">Holiday</option>
+                <option value="personal">Personal</option>
+            </select>
             <input type="text" id="ev-desc" placeholder="Event Name" style="padding:10px; border-radius:8px; border:1px solid var(--paper-shadow);">
             <button class="save-btn" onclick="saveEvent()">Create Event</button>
         </div>
@@ -242,7 +234,7 @@ body.dark .day-cell, body.dark .note-card, body.dark .month-selector { backgroun
 <div class="app-wrapper">
   <div class="hero-panel">
     <div class="binder-wrapper">
-      <div class="spirals" id="spirals"></div>
+      <div class="spiral-holes" id="spirals"></div>
       <div class="hero-content">
         <div class="hero-image-area">
           <img id="hero-img" src="" alt="Nature">
@@ -288,7 +280,7 @@ body.dark .day-cell, body.dark .note-card, body.dark .month-selector { backgroun
     <div class="notes-section">
       <h3 style="font-family:'Playfair Display', serif; margin-bottom:15px;">📝 Monthly Journal</h3>
       <div class="notes-input-area">
-        <textarea class="notes-textarea" id="note-input" placeholder="Click a date on the calendar, then type here to save a note..."></textarea>
+        <textarea class="notes-textarea" id="note-input" placeholder="Click a date, then type here to save a note..."></textarea>
         <button class="save-btn" onclick="saveNote()">Save</button>
       </div>
       <div class="month-notes-container" id="notes-list"></div>
@@ -297,9 +289,6 @@ body.dark .day-cell, body.dark .note-card, body.dark .month-selector { backgroun
 </div>
 
 <script>
-/* ═══════════════════════════════════════════════
-   DATA & STATE
-═══════════════════════════════════════════════ */
 const MONTH_DATA = [
   { img: "https://images.unsplash.com/photo-1477332552946-cfb384aeaf1c?w=800", q: "A fresh start isn’t a new place, it’s a new perspective." },
   { img: "https://images.unsplash.com/photo-1445262102387-5febb1934c4a?w=800", q: "In stillness, we find clarity and quiet strength." },
@@ -324,9 +313,6 @@ let state = {
   activeFilter: null
 };
 
-/* ═══════════════════════════════════════════════
-   CORE ENGINE
-═══════════════════════════════════════════════ */
 function init() {
   const s = document.getElementById('spirals');
   for(let i=0; i<14; i++) s.innerHTML += '<div class="spiral-hole"></div>';
@@ -361,31 +347,36 @@ function renderGrid() {
     if(day > 0 && day <= days) {
       const dObj = new Date(state.viewDate.getFullYear(), state.viewDate.getMonth(), day);
       cell.innerHTML = `<span class="day-num">${day}</span>`;
-      
       if(isSameDay(dObj, state.selectedDate)) cell.classList.add('selected');
       if(isSameDay(dObj, new Date())) cell.classList.add('today');
 
       let hasFilteredEvent = false;
+      let inRange = false;
+
       state.events.forEach(ev => {
         const start = new Date(ev.startD);
         const end = new Date(ev.endD);
+        // Normalize time for comparison
+        start.setHours(0,0,0,0);
+        end.setHours(0,0,0,0);
+        dObj.setHours(0,0,0,0);
+
         if(dObj >= start && dObj <= end) {
-            cell.classList.add('in-range');
+            inRange = true;
             if (state.activeFilter && ev.category === state.activeFilter) hasFilteredEvent = true;
         }
       });
 
+      if (inRange) cell.classList.add('in-range');
+
       if (state.activeFilter) {
-          if (hasFilteredEvent) {
-              cell.classList.add('filter-match', state.activeFilter);
-          } else {
-              cell.classList.add('filter-dim');
-          }
+          if (hasFilteredEvent) cell.classList.add('filter-match', state.activeFilter);
+          else cell.classList.add('filter-dim');
       }
 
       cell.onclick = () => { 
-          state.selectedDate = dObj; 
-          openModal(dObj);
+          state.selectedDate = new Date(dObj);
+          openModal(state.selectedDate);
           renderAll(); 
       };
     } else { cell.style.opacity = '0'; cell.style.pointerEvents = 'none'; }
@@ -393,11 +384,13 @@ function renderGrid() {
   }
 }
 
-/* ═══════════════════════════════════════════════
-   MODAL & EVENT LOGIC
-═══════════════════════════════════════════════ */
 function openModal(date) {
-    const dStr = date.toISOString().split('T')[0];
+    // FIX: Using local date strings to prevent one-day offset issues 
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const dStr = `${year}-${month}-${day}`;
+
     document.getElementById('ev-start-date').value = dStr;
     document.getElementById('ev-end-date').value = dStr;
     document.getElementById('modal-date-title').innerText = date.getDate();
@@ -410,41 +403,32 @@ function openModal(date) {
 function renderDayEvents(dateStr) {
     const list = document.getElementById('day-events-list');
     list.innerHTML = "";
-    const dayEvents = state.events.filter(ev => {
-        const d = new Date(dateStr);
-        return d >= new Date(ev.startD) && d <= new Date(ev.endD);
-    });
+    const targetDate = new Date(dateStr);
+    targetDate.setHours(0,0,0,0);
 
-    dayEvents.forEach((ev, index) => {
+    const dayEvents = state.events.filter(ev => {
+        const s = new Date(ev.startD);
+        const e = new Date(ev.endD);
+        s.setHours(0,0,0,0);
+        e.setHours(0,0,0,0);
+        return targetDate >= s && targetDate <= e;
+    });
+    dayEvents.forEach(ev => {
         const item = document.createElement('div');
-        item.className = "event-list-item";
-        item.innerHTML = `
-            <div>
-                <span style="color:var(--cat-${ev.category}); font-weight:bold;">●</span>
-                <span style="margin-left:8px; font-weight:600;">${ev.desc}</span>
-            </div>
-            <button class="discard-btn" style="width:auto; margin:0;" onclick="discardEvent(${ev.id})">Discard</button>
-        `;
+        item.style.cssText = "padding:10px; background:white; border-radius:8px; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center; border:1px solid #ddd;";
+        item.innerHTML = `<div><span style="color:var(--cat-${ev.category})">●</span> <strong>${ev.desc}</strong></div><button onclick="discardEvent(${ev.id})" style="background:#e05c5c; color:white; border:none; padding:5px 10px; border-radius:4px; cursor:pointer;">Discard</button>`;
         list.appendChild(item);
     });
 }
 
 function saveEvent() {
     const desc = document.getElementById('ev-desc').value.trim();
-    if(!desc) { showToast("Please name the event."); return; }
-    const ev = {
-        id: Date.now(),
-        startD: document.getElementById('ev-start-date').value,
-        startT: document.getElementById('ev-start-time').value,
-        endD: document.getElementById('ev-end-date').value,
-        endT: document.getElementById('ev-end-time').value,
-        category: document.getElementById('ev-category').value,
-        desc: desc
-    };
+    if(!desc) return;
+    const ev = { id: Date.now(), startD: document.getElementById('ev-start-date').value, startT: document.getElementById('ev-start-time').value, endD: document.getElementById('ev-end-date').value, endT: document.getElementById('ev-end-time').value, category: document.getElementById('ev-category').value, desc: desc };
     state.events.push(ev);
     localStorage.setItem('dp_events', JSON.stringify(state.events));
-    document.getElementById('ev-desc').value = "";
     showToast("Event Created!");
+    document.getElementById('ev-desc').value = "";
     renderDayEvents(ev.startD);
     renderAll();
 }
@@ -453,8 +437,10 @@ function discardEvent(id) {
     state.events = state.events.filter(ev => ev.id !== id);
     localStorage.setItem('dp_events', JSON.stringify(state.events));
     showToast("Event Discarded.");
-    const dateStr = state.selectedDate.toISOString().split('T')[0];
-    renderDayEvents(dateStr);
+    const year = state.selectedDate.getFullYear();
+    const month = String(state.selectedDate.getMonth() + 1).padStart(2, '0');
+    const day = String(state.selectedDate.getDate()).padStart(2, '0');
+    renderDayEvents(`${year}-${month}-${day}`);
     renderAll();
 }
 
@@ -485,40 +471,28 @@ function saveNote() {
 function renderNotesList() {
     const list = document.getElementById('notes-list');
     list.innerHTML = "";
-    const currentMonthKeys = Object.keys(state.notes).filter(key => {
+    Object.keys(state.notes).filter(key => {
         const d = new Date(key);
         return d.getMonth() === state.viewDate.getMonth() && d.getFullYear() === state.viewDate.getFullYear();
-    });
-    currentMonthKeys.forEach(key => {
+    }).forEach(key => {
         const d = new Date(key);
         const card = document.createElement('div');
         card.className = "note-card";
-        card.innerHTML = `
-            <div style="font-weight:bold; font-size:0.8rem; color:var(--accent);">${d.getDate()} ${d.toLocaleString('default',{month:'short'})}</div>
-            <div style="font-family:'Caveat', cursive; font-size:1.1rem; flex:1; margin:0 15px;">${state.notes[key].substring(0,50)}...</div>
-            <div style="color:var(--ink-faint)">›</div>
-        `;
-        card.onclick = () => openModal(d);
+        card.innerHTML = `<div><strong>${d.getDate()}</strong></div><div style="flex:1; margin:0 15px;">${state.notes[key].substring(0,60)}...</div><div>›</div>`;
+        card.onclick = () => {
+            state.selectedDate = new Date(d);
+            openModal(d);
+            renderAll();
+        };
         list.appendChild(card);
     });
 }
 
 function changeMonth(dir) { state.viewDate.setMonth(state.viewDate.getMonth() + dir); renderAll(); }
 function goToToday() { state.viewDate = new Date(); state.selectedDate = new Date(); renderAll(); }
-function toggleTheme() {
-    state.theme = state.theme === 'light' ? 'dark' : 'light';
-    document.body.className = state.theme;
-    localStorage.setItem('dp_theme', state.theme);
-}
-function updateStats() {
-    document.getElementById('s-ev').innerText = state.events.length;
-    document.getElementById('s-nt').innerText = Object.keys(state.notes).length;
-}
-function showToast(m) {
-    const t = document.getElementById('toast');
-    t.innerText = m; t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 2000);
-}
+function toggleTheme() { state.theme = state.theme === 'light' ? 'dark' : 'light'; document.body.className = state.theme; localStorage.setItem('dp_theme', state.theme); }
+function updateStats() { document.getElementById('s-ev').innerText = state.events.length; document.getElementById('s-nt').innerText = Object.keys(state.notes).length; }
+function showToast(m) { const t = document.getElementById('toast'); t.innerText = m; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 2000); }
 function isSameDay(d1, d2) { return d1.toDateString() === d2.toDateString(); }
 
 init();
